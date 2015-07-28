@@ -12,9 +12,7 @@ COPY packages.txt /packages.txt
 
 RUN apt-get -y install $(cat /packages.txt)
 
-RUN groupadd -r drobo && useradd -r -g drobo drobo && \
-    mkdir -p /home/drobo/build && \
-    chown -R drobo:drobo /home/drobo
+RUN groupadd -r drobo && useradd -r -g drobo drobo
 
 RUN wget -O /tmp/arm7-tools.gz https://links.connecteddata.com/linkstorage/55b7918402c57c037bd2a85e/arm7_tools.gz/1438180629/cesZkWw%252FvX%252F3%252BbGNpVoQWTVIBrA%253D/arm7-tools.gz && \
     mkdir -p /home/drobo/xtools/toolchain/5n && \
@@ -22,7 +20,9 @@ RUN wget -O /tmp/arm7-tools.gz https://links.connecteddata.com/linkstorage/55b79
 
 RUN mkdir -p /mnt/DroboFS/Shares/DroboApps && \
     mkdir -p /mnt/DroboFS/System && \
-    chmod a+rw /mnt/DroboFS/System /mnt/DroboFS/Shares/DroboApps
+    chmod a+rw /mnt/DroboFS/System /mnt/DroboFS/Shares/DroboApps && \
+    mkdir -p /home/drobo/build && \
+    chown -R drobo:drobo /home/drobo
 
 VOLUME ["/home/drobo/build", "/mnt/DroboFS/Shares/DroboApps"]
 
