@@ -5,6 +5,7 @@ MAINTAINER ricardo@droboports.com
 RUN apt-get -y update && \
     apt-get -y install software-properties-common && \
     add-apt-repository -y ppa:git-core/ppa && \
+    add-apt-repository -y ppa:openjdk-r/ppa && \
     apt-get -y update
 
 COPY packages.txt /packages.txt
