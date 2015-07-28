@@ -7,7 +7,9 @@ RUN apt-get -y update && \
     add-apt-repository -y ppa:git-core/ppa && \
     apt-get -y update
 
-RUN dpkg --set-selections < packages.txt
+COPY packages.txt /packages.txt
+
+RUN dpkg --set-selections < /packages.txt
 
 RUN groupadd -r drobo && useradd -r -g drobo drobo && \
     mkdir -p /home/drobo/build
