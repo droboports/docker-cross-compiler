@@ -10,7 +10,7 @@ RUN apt-get -y update && \
 
 COPY packages.txt /packages.txt
 
-RUN apt-get install $(cat /packages.txt)
+RUN apt-get -y install $(cat /packages.txt)
 
 RUN groupadd -r drobo && useradd -r -g drobo drobo && \
     mkdir -p /home/drobo/build
