@@ -2,10 +2,10 @@ FROM ubuntu:14.04
 
 MAINTAINER ricardo@droboports.com
 
-RUN apt-get update && \
-    apt-get install software-properties-common && \
-    add-apt-repository ppa:git-core/ppa && \
-    apt-get update
+RUN apt-get -y update && \
+    apt-get -y install software-properties-common && \
+    add-apt-repository -y ppa:git-core/ppa && \
+    apt-get -y update
 
 RUN dpkg --set-selections < packages.txt
 
