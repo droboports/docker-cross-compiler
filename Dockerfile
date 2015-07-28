@@ -12,7 +12,12 @@ COPY packages.txt /packages.txt
 
 RUN apt-get -y install $(cat /packages.txt)
 
-RUN groupadd -r drobo && useradd -r -g drobo drobo
+# The official toolchain is 32-bit
+RUN dpkg --add-architecture i386 && \
+    apt-get update && \
+    apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
+
+RUN groupadd -r drobo && useradd -r -g drobo -G sudo drobo
 
 RUN wget -O /tmp/arm7-tools.gz https://links.connecteddata.com/linkstorage/55b7918402c57c037bd2a85e/arm7_tools.gz/1438180629/cesZkWw%252FvX%252F3%252BbGNpVoQWTVIBrA%253D/arm7-tools.gz && \
     mkdir -p /home/drobo/xtools/toolchain/5n && \
