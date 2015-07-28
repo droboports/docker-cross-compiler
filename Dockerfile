@@ -14,8 +14,8 @@ RUN apt-get -y install $(cat /packages.txt)
 
 # The official toolchain is 32-bit
 RUN dpkg --add-architecture i386 && \
-    apt-get update && \
-    apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
+    apt-get -y update && \
+    apt-get -y install libc6:i386 libncurses5:i386 libstdc++6:i386
 
 RUN groupadd -r drobo && useradd -r -g drobo -G sudo drobo
 
