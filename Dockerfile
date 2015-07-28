@@ -9,7 +9,8 @@ RUN apt-get -y update && \
 
 COPY packages.txt /packages.txt
 
-RUN dpkg --set-selections < /packages.txt
+RUN _packages=$(cat /packages.txt) && \
+    apt-get install $_packages
 
 RUN groupadd -r drobo && useradd -r -g drobo drobo && \
     mkdir -p /home/drobo/build

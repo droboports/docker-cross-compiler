@@ -1,91 +1,91 @@
-autoconf                install
-autogen                 install
-automake                install
-autotools-dev           install
-binfmt-support          install
-binutils                install
-bison                   install
-build-essential         install
-bzip2                   install
-bzr                     install
-ca-certificates         install
-ca-certificates-java    install
-cmake                   install
-cmake-curses-gui        install
-cmake-data              install
-colordiff               install
-coreutils               install
-cpio                    install
-cpp                     install
-curl                    install
-cvs                     install
-diffutils               install
-distcc                  install
-distcc-pump             install
-file                    install
-flex                    install
-g++                     install
-gcc                     install
-git                     install
-git-svn                 install
-grep                    install
-gzip                    install
-libncurses5-dev         install
-m4                      install
-make                    install
-makedev                 install
-man-db                  install
-manpages                install
-manpages-dev            install
-mawk                    install
-mc                      install
-mc-data                 install
-nano                    install
-ncdu                    install
-ncurses-base            install
-ncurses-bin             install
-ncurses-term            install
-nodejs                  install
-openjdk-8-jre-headless  install
-openssh-client          install
-openssh-server          install
-openssh-sftp-server     install
-patch                   install
-perl                    install
-perl-base               install
-perl-modules            install
-php5-cli                install
-php5-common             install
-php5-json               install
-php5-readline           install
-pkg-config              install
-python2.7               install
-python3                 install
-qemu-user-static        install
-readline-common         install
-realpath                install
-rsync                   install
-ruby1.9.1               install
-ruby1.9.1-dev           install
-ruby2.0                 install
-ruby2.0-dev             install
-rubygems-integration    install
-scons                   install
-sed                     install
-sshfs                   install
-strace                  install
-subversion              install
-sudo                    install
-tar                     install
-tig                     install
-tree                    install
-tzdata                  install
-tzdata-java             install
-unzip                   install
-vim-common              install
-vim-tiny                install
-wget                    install
-xz-utils                install
-zip                     install
-zlib1g                  install
-zlib1g-dev              install
+autoconf
+autogen
+automake
+autotools-dev
+binfmt-support
+binutils
+bison
+build-essential
+bzip2
+bzr
+ca-certificates
+ca-certificates-java
+cmake
+cmake-curses-gui
+cmake-data
+colordiff
+coreutils
+cpio
+cpp
+curl
+cvs
+diffutils
+distcc
+distcc-pump
+file
+flex
+g++
+gcc
+git
+git-svn
+grep
+gzip
+libncurses5-dev
+m4
+make
+makedev
+man-db
+manpages
+manpages-dev
+mawk
+mc
+mc-data
+nano
+ncdu
+ncurses-base
+ncurses-bin
+ncurses-term
+nodejs
+openjdk-8-jre-headless
+openssh-client
+openssh-server
+openssh-sftp-server
+patch
+perl
+perl-base
+perl-modules
+php5-cli
+php5-common
+php5-json
+php5-readline
+pkg-config
+python2.7
+python3
+qemu-user-static
+readline-common
+realpath
+rsync
+ruby1.9.1
+ruby1.9.1-dev
+ruby2.0
+ruby2.0-dev
+rubygems-integration
+scons
+sed
+sshfs
+strace
+subversion
+sudo
+tar
+tig
+tree
+tzdata
+tzdata-java
+unzip
+vim-common
+vim-tiny
+wget
+xz-utils
+zip
+zlib1g
+zlib1g-dev
