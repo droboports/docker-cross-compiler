@@ -40,6 +40,8 @@ RUN set -x; \
     mkdir -p /home/drobo/build && \
     chown -R drobo:drobo /home/drobo
 
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+
 RUN set -x; \
     apt-get autoclean && \
     apt-get clean
@@ -48,4 +50,5 @@ VOLUME ["/home/drobo/build", "/mnt/DroboFS/Shares/DroboApps"]
 
 USER drobo
 
+ENTRYPOINT ["/docker-entrypoint.sh"]
 CMD ["/bin/bash"]
