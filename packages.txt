@@ -33,6 +33,7 @@ grep
 gzip
 libncurses5-dev
 libtool
+libxml2-utils
 m4
 make
 makedev
