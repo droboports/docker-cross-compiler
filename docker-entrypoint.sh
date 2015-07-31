@@ -10,7 +10,8 @@ if [ "${1:-}" = "build" ]; then
   git clone "https://github.com/droboports/${2}.git"
   cd "${2}"
   ./build.sh
-  cp *.tgz *.egg /dist/
+  cp *.tgz /dist/
+  rm -f "/dist/.${2}"
 elif [ -z "${1:-}" ]; then
   exec /bin/bash
 else
