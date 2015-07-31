@@ -34,10 +34,9 @@ RUN set -x; \
     rm -f /tmp/arm7-tools.html /tmp/arm7-tools.gz
 
 RUN set -x; \
-    mkdir -p /mnt/DroboFS/Shares/DroboApps && \
-    mkdir -p /mnt/DroboFS/System && \
-    chmod a+rw /mnt/DroboFS/System /mnt/DroboFS/Shares/DroboApps && \
-    mkdir -p /home/drobo/build /home/drobo/dist && \
+    mkdir -p   /mnt/DroboFS/Shares/DroboApps /mnt/DroboFS/System /dist && \
+    chmod a+rw /mnt/DroboFS/Shares/DroboApps /mnt/DroboFS/System /dist && \
+    mkdir -p /home/drobo/build && \
     chown -R drobo:drobo /home/drobo
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
@@ -46,7 +45,7 @@ RUN set -x; \
     apt-get autoclean && \
     apt-get clean
 
-VOLUME ["/home/drobo/build", "/mnt/DroboFS/Shares/DroboApps", "/home/drobo/dist"]
+VOLUME ["/home/drobo/build", "/mnt/DroboFS/Shares/DroboApps", "/dist"]
 
 USER drobo
 
