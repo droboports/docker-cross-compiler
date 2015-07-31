@@ -9,6 +9,7 @@ if [ "${1:-}" = "build" ]; then
   git clone "https://github.com/droboports/${2}.git"
   cd "${2}"
   exec ./build.sh
+  cp *.tgz *.egg ~/dist/
 else
   exec "$@"
 fi
