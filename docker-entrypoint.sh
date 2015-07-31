@@ -2,6 +2,7 @@
 
 set -o errexit
 set -o nounset
+set -o xtrace
 
 if [ "${1}" == "build" ]; then
   cd ~/build

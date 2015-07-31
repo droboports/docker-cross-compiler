@@ -51,4 +51,4 @@ VOLUME ["/home/drobo/build", "/mnt/DroboFS/Shares/DroboApps"]
 USER drobo
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["/bin/bash"]
+CMD /bin/bash
