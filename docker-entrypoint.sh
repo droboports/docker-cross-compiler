@@ -14,7 +14,7 @@ if [ "${1:-}" = "build" ]; then
     git clone "${2}" "${_name}"
   fi
   cd "${_name}"
-  ./build.sh && cp *.tgz /dist/ || exec bin/bash
+  ./build.sh && cp *.tgz /dist/ || exec /bin/bash
   rm -f "/dist/.${2}"
 elif [ -z "${1:-}" ]; then
   exec /bin/bash
