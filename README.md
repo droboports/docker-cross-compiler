@@ -33,11 +33,11 @@ ls -la *.tgz
 
 ## Using the container's build command
 
-This container provides a special `build` command to build DroboPorts projects.
+This container provides a special `build` command to build projects in git repositories.
 
-The syntax is `build project-name`, where `project-name` is the name of the DroboPorts project.
+The syntax is `build project-name` or `build url.git`, where `project-name` is the name of the DroboPorts project, and `url.git` is the URL of a git repository (e.g., https://github.com/droboports/busybox.git).
 
-The name of the DroboPorts project is the last component of the GitHub URL. For example, to build the project hosted by the repository https://github.com/droboports/busybox, use the name `busybox`.
+For DroboPorts projects, the name is the last component of the GitHub URL. For example, to build the project hosted by the repository https://github.com/droboports/busybox, use the name `busybox`.
 
 To use the build command, first create a folder to host the resulting packages:
 ```
@@ -50,4 +50,4 @@ Then start the container using the special `build` syntax:
 docker run --rm --volume ~/dist:/dist droboports/compiler build project-name
 ```
 
-Once the build is done, `~/dist` will contain `project_name.tgz`.
+Once the build is done, `~/dist` will contain `project-name.tgz`.
