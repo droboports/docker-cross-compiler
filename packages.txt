@@ -29,6 +29,7 @@ gcc
 gettext
 git
 git-svn
+gperf
 grep
 gzip
 libncurses5-dev
