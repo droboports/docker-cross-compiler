@@ -1,3 +1,4 @@
+antlr3
 autoconf
 autogen
 automake
@@ -32,6 +33,7 @@ git-svn
 gperf
 grep
 gzip
+intltool
 libgcrypt11-dev
 libncurses5-dev
 libtool
