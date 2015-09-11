@@ -53,6 +53,7 @@ ncurses-base
 ncurses-bin
 ncurses-term
 nodejs
+npm
 openjdk-8-jre-headless
 openssh-client
 openssh-server
