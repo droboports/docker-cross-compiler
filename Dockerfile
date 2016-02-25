@@ -2,6 +2,9 @@ FROM ubuntu:14.04
 
 MAINTAINER ricardo@droboports.com
 
+ENV USER_ID 1000
+ENV GROUP_ID 1000
+
 RUN set -x; \
     apt-get -y update && \
     apt-get -y install software-properties-common && \
@@ -21,8 +24,8 @@ RUN set -x; \
     apt-get -y install libc6:i386 libncurses5:i386 libstdc++6:i386
 
 RUN set -x; \
-    groupadd -r drobo && \
-    useradd -r -g drobo -G sudo drobo && \
+    groupadd -r -g $GROUP_ID drobo && \
+    useradd -r -u $USER_ID -g drobo -G sudo drobo && \
     echo drobo:drobo | chpasswd
 
 RUN set -x; \
