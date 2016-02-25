@@ -29,12 +29,11 @@ RUN set -x; \
     echo drobo:drobo | chpasswd
 
 RUN set -x; \
-    wget -O /tmp/arm7-tools.html https://links.connecteddata.com/GpZRrby7WsaCAys/arm7-tools.gz/wui && \
-    _url=$(cat /tmp/arm7-tools.html | grep "id=\"http_link_download_button\"" | sed -e "s/.*href=\"\(.*\)\" title.*/\1/g") && \
-    wget -O /tmp/arm7-tools.gz https://links.connecteddata.com/${_url} && \
+    wget -O /tmp/SDK-2.1.zip ftp://updates.drobo.com/droboapps/development/SDK-2.1.zip && \
+    unzip -d /tmp/ /tmp/SDK-2.1.zip && \
     mkdir -p /home/drobo/xtools/toolchain/5n && \
-    tar -zxf /tmp/arm7-tools.gz -C /home/drobo/xtools/toolchain/5n && \
-    rm -f /tmp/arm7-tools.html /tmp/arm7-tools.gz
+    tar -zxf "/tmp/DroboApps SDK 2.1/arm7-tools.gz" -C /home/drobo/xtools/toolchain/5n && \
+    rm -fr /tmp/SDK-2.1.zip "/tmp/DroboApps SDK 2.1"
 
 RUN set -x; \
     mkdir -p   /mnt/DroboFS/Shares/DroboApps /mnt/DroboFS/System /dist && \
