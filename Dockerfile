@@ -10,18 +10,24 @@ RUN set -x; \
     apt-get -y install software-properties-common && \
     add-apt-repository -y ppa:git-core/ppa && \
     add-apt-repository -y ppa:openjdk-r/ppa && \
-    apt-get -y update
+    apt-get -y update && \
+    apt-get clean && \
+    apt-get autoclean
 
 COPY packages.txt /packages.txt
 
 RUN set -x; \
-    apt-get -y install $(cat /packages.txt)
+    apt-get -y install $(cat /packages.txt) && \
+    apt-get clean && \
+    apt-get autoclean
 
 # The official toolchain is 32-bit
 RUN set -x; \
     dpkg --add-architecture i386 && \
     apt-get -y update && \
-    apt-get -y install libc6:i386 libncurses5:i386 libstdc++6:i386
+    apt-get -y install libc6:i386 libncurses5:i386 libstdc++6:i386 && \
+    apt-get clean && \
+    apt-get autoclean
 
 RUN set -x; \
     groupadd -r -g $GROUP_ID drobo && \
@@ -43,10 +49,6 @@ RUN set -x; \
 
 COPY sudoers /etc/sudoers.d/drobo
 COPY docker-entrypoint.sh /docker-entrypoint.sh
-
-RUN set -x; \
-    apt-get autoclean && \
-    apt-get clean
 
 VOLUME ["/home/drobo/build", "/mnt/DroboFS/Shares/DroboApps", "/dist"]
 
