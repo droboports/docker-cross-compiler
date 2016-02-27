@@ -41,6 +41,7 @@ RUN set -x; \
     mkdir -p /home/drobo/build && \
     chown -R drobo:drobo /home/drobo
 
+COPY sudoers /etc/sudoers.d/drobo
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 RUN set -x; \

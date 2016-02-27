@@ -3,6 +3,10 @@
 set -o errexit
 set -o nounset
 
+if ! mountpoint /proc/sys/fs/binfmt_misc &> /dev/null; then
+  mount -t binfmt_misc binfmt_misc /proc/sys/fs/binfmt_misc
+fi
+
 if [ "${1:-}" = "build" ]; then
   set -o xtrace
   shift
