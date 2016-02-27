@@ -4,8 +4,8 @@ set -o errexit
 set -o nounset
 
 if ! mountpoint /proc/sys/fs/binfmt_misc &> /dev/null; then
-  sudo mount -t binfmt_misc binfmt_misc /proc/sys/fs/binfmt_misc
-  sudo update-binfmts --enable qemu-arm
+  sudo /bin/mount -t binfmt_misc binfmt_misc /proc/sys/fs/binfmt_misc
+  sudo /usr/sbin/update-binfmts --enable qemu-arm
   update-binfmts --display | grep qemu-arm
 fi
 

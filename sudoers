@@ -1,1 +1,2 @@
 drobo ALL=(root) NOPASSWD: /bin/mount -t binfmt_misc binfmt_misc /proc/sys/fs/binfmt_misc
+drobo ALL=(root) NOPASSWD: /usr/sbin/update-binfmts --enable qemu-arm
