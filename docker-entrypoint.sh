@@ -3,7 +3,7 @@
 set -o errexit
 set -o nounset
 
-if ! mountpoint /proc/sys/fs/binfmt_misc &> /dev/null; then
+if [ -n "${WITH_BINFMT:-}" ] && ! mountpoint /proc/sys/fs/binfmt_misc &> /dev/null; then
   sudo /bin/mount -t binfmt_misc binfmt_misc /proc/sys/fs/binfmt_misc
   sudo /usr/sbin/update-binfmts --enable qemu-arm
   update-binfmts --display | grep qemu-arm
