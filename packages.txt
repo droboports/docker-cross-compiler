@@ -90,6 +90,7 @@ tig
 tree
 tzdata
 tzdata-java
+u-boot-tools
 unzip
 vim-common
 vim-tiny
