@@ -23,14 +23,18 @@ if [ "${1:-}" = "build" ]; then
     git clone "${1}" "${_name}"
   fi
   cd "${_name}"
+  export GOPATH="/mnt/DroboFS/Shares/DroboApps/${_name}"
   shift
   ./build.sh "$@"
   if [ -n "$(find . -maxdepth 1 -name '*.tgz' -print -quit)" ]; then
     cp *.tgz /dist/
+  elif [ -n "$(find . -maxdepth 1 -name '*.egg' -print -quit)" ]; then
+    cp *.egg /dist/
   else
     exec /bin/bash
   fi
 elif [ -z "${1:-}" ]; then
+  echo "INFO: Do not forget to export GOPATH=/mnt/DroboFS/Shares/DroboApps/<appname> if using the Golang compiler"
   exec /bin/bash
 else
   exec "$@"

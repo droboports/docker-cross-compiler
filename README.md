@@ -31,6 +31,39 @@ cd busybox
 ls -la *.tgz
 ```
 
+## Build `samba` using a temporary interactive container (python cross-compiler)
+
+From the container prompt:
+```
+cd ~/build
+git clone https://github.com/droboports/samba.git
+cd samba
+./build.sh
+ls -la *.tgz
+```
+
+## Build some golang code using a temporary interactive container
+
+From the container prompt:
+```
+cd ~/build
+export GOPATH=/mnt/DroboFS/Shares/DroboApps/hello-world
+cat > hello-world.go << EOF
+package main
+import "fmt"
+func main() {
+  fmt.Println("hello world")
+}
+EOF
+go build -o hello-world hello-world.go
+```
+
+This is the resulting `hello-world`:
+```
+$ file hello-world
+hello-world: ELF 32-bit LSB  executable, ARM, EABI5 version 1 (SYSV), statically linked, not stripped
+```
+
 ## Using the container's build command
 
 This container provides a special `build` command to build projects in git repositories.

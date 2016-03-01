@@ -4,6 +4,10 @@ MAINTAINER ricardo@droboports.com
 
 ENV USER_ID 1000
 ENV GROUP_ID 1000
+ENV PYTHON_VERSION 2.7.10
+ENV GOLANG_VERSION 1.5.1
+ENV GOARCH arm
+ENV GOARM 7
 
 RUN set -x; \
     apt-get -y update && \
@@ -41,6 +45,22 @@ RUN set -x; \
     tar -zxf "/tmp/DroboApps SDK 2.1/arm7-tools.gz" -C /home/drobo/xtools/toolchain/5n && \
     rm -fr /tmp/SDK-2.1.zip "/tmp/DroboApps SDK 2.1"
 
+# Python cross-compiler
+RUN set -x; \
+    wget -O /tmp/xpython2.tgz https://github.com/droboports/python2/releases/download/v${PYTHON_VERSION}/xpython2.tgz && \
+    mkdir -p /home/drobo/xtools/python2/5n && \
+    tar -zxf /tmp/xpython2.tgz -C /home/drobo/xtools/python2/5n && \
+    rm -f /tmp/xpython2.tgz && \
+    chown -R drobo:drobo /home/drobo
+
+# Golang cross-compiler
+RUN set -x; \
+    wget -O /tmp/xgolang.tgz https://github.com/droboports/golang/releases/download/v${GOLANG_VERSION}/xgolang.tgz && \
+    mkdir -p /home/drobo/xtools/golang/5n && \
+    tar -zxf /tmp/xgolang.tgz -C /home/drobo/xtools/golang/5n && \
+    rm -f /tmp/xgolang.tgz && \
+    chown -R drobo:drobo /home/drobo
+
 RUN set -x; \
     mkdir -p   /mnt/DroboFS/Shares/DroboApps /mnt/DroboFS/System /dist && \
     chmod a+rw /mnt/DroboFS/Shares/DroboApps /mnt/DroboFS/System /dist && \
@@ -51,6 +71,8 @@ COPY sudoers /etc/sudoers.d/drobo
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
 VOLUME ["/home/drobo/build", "/mnt/DroboFS/Shares/DroboApps", "/dist"]
+
+ENV PATH /home/drobo/xtools/golang/5n/bin:${PATH}
 
 USER drobo
 
