@@ -23,7 +23,10 @@ if [ "${1:-}" = "build" ]; then
   _branch_tag=""
 
   # see if URL has a fragment ID ('#') indicating the branch/tag. ('0' means no)
-  _hash_idx=`expr index "${1}" '#'`
+  # NOTE: expr returns a non-zero exit status if it can't find the index, which
+  # stops the execution due to errexit. to work around this, we or the command
+  # with true to ensure the return value of the subshell is always true
+  _hash_idx=$(expr index "${1}" '#' || true)
   if [ "${_hash_idx}" != "0" ]; then
     # NOTE: /bin/sh does not allow for advanced parameter expansions, hence the
     # awk hoops we need to jump through to do simple substrings.
