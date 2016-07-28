@@ -66,11 +66,15 @@ hello-world: ELF 32-bit LSB  executable, ARM, EABI5 version 1 (SYSV), statically
 
 ## Using the container's build command
 
-This container provides a special `build` command to build projects in git repositories.
+This container provides a special `build` command to build projects in Git repositories.
 
-The syntax is `build project-name` or `build url.git`, where `project-name` is the name of the DroboPorts project, and `url.git` is the URL of a git repository (e.g., https://github.com/droboports/busybox.git).
+The build command has two forms: `build PROJECT_NAME` and `build GIT_URL`.
 
-For DroboPorts projects, the name is the last component of the GitHub URL. For example, to build the project hosted by the repository https://github.com/droboports/busybox, use the name `busybox`.
+The `build PROJECT_NAME` form is a shortcut to build a project from the DroboPorts GitHub organization (https://github.com/droboports), with the `PROJECT_NAME` being the last component of the GitHub URL. For example, the `PROJECT_NAME` for the https://github.com/droboports/busybox project would be simply `busybox`.
+
+The `build GIT_URL` form allows any arbitrary Git repo to be built. For GitHub repos, `GIT_URL` would be the clone URL (e.g., https://github.com/droboports/busybox.git). The URL can optionally include a fragment ID to specify a branch or tag name. For example, to build the `v0.0.1` tag in your https://github.com/username/project.git repo, the `GIT_URL` would be `https://github.com/username/project.git#v0.0.1`. Without a branch or tag name specified, the [default Git branch](https://help.github.com/articles/setting-the-default-branch/) will be used.
+
+(Note that the building a specific branch or tag only works with the `build GIT_URL` form.)
 
 To use the build command, first create a folder to host the resulting packages:
 ```
@@ -80,7 +84,7 @@ chmod a+rw ~/dist
 
 Then start the container using the special `build` syntax:
 ```
-docker run --rm --volume ~/dist:/dist droboports/compiler build project-name
+docker run --rm --volume ~/dist:/dist droboports/compiler build PROJECT_NAME
 ```
 
-Once the build is done, `~/dist` will contain `project-name.tgz`.
+Once the build is done, `~/dist` will contain `PROJECT_NAME.tgz`.
