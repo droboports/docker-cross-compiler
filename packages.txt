@@ -48,6 +48,7 @@ manpages-dev
 mawk
 mc
 mc-data
+mtd-utils
 nano
 ncdu
 ncurses-base
