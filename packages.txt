@@ -3,6 +3,7 @@ autoconf
 autogen
 automake
 autotools-dev
+bc
 binfmt-support
 binutils
 bison
