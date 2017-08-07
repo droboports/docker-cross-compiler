@@ -4,6 +4,7 @@ MAINTAINER ricardo@droboports.com
 
 ENV USER_ID 1000
 ENV GROUP_ID 1000
+ENV XTOOL_VERSION 6.4.0
 ENV PYTHON_VERSION 2.7.10
 ENV GOLANG_VERSION 1.7.4
 ENV GOARCH arm
@@ -44,6 +45,13 @@ RUN set -x; \
     mkdir -p /home/drobo/xtools/toolchain/5n && \
     tar -zxf "/tmp/DroboApps SDK 2.1/arm7-tools.gz" -C /home/drobo/xtools/toolchain/5n && \
     rm -fr /tmp/SDK-2.1.zip "/tmp/DroboApps SDK 2.1"
+
+# The new toolchain is 64-bit
+RUN set -x; \
+    wget -O /tmp/arm-drobo_x86_64-linux-gnueabi.tar.xz https://github.com/drobo/cross-compiler/releases/download/v${XTOOL_VERSION}/arm-drobo_x86_64-linux-gnueabi.tar.xz && \
+    mkdir -p /home/drobo/xtools/toolchain/arm-drobo_x86_64-linux-gnueabi && \
+    tar -zxf /tmp/arm-drobo_x86_64-linux-gnueabi.tar.xz -C /home/drobo/xtools/toolchain/arm-drobo_x86_64-linux-gnueabi && \
+    rm -fr /tmp/arm-drobo_x86_64-linux-gnueabi.tar.xz
 
 # Python cross-compiler
 RUN set -x; \
