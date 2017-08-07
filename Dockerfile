@@ -50,7 +50,7 @@ RUN set -x; \
 RUN set -x; \
     wget -O /tmp/arm-drobo_x86_64-linux-gnueabi.tar.xz https://github.com/drobo/cross-compiler/releases/download/v${XTOOL_VERSION}/arm-drobo_x86_64-linux-gnueabi.tar.xz && \
     mkdir -p /home/drobo/xtools/toolchain/arm-drobo_x86_64-linux-gnueabi && \
-    tar -zxf /tmp/arm-drobo_x86_64-linux-gnueabi.tar.xz -C /home/drobo/xtools/toolchain/arm-drobo_x86_64-linux-gnueabi && \
+    tar -axf /tmp/arm-drobo_x86_64-linux-gnueabi.tar.xz -C /home/drobo/xtools/toolchain/arm-drobo_x86_64-linux-gnueabi && \
     rm -fr /tmp/arm-drobo_x86_64-linux-gnueabi.tar.xz
 
 # Python cross-compiler
