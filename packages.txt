@@ -97,6 +97,7 @@ unzip
 vim-common
 vim-tiny
 wget
+xmlstarlet
 xz-utils
 zip
 zlib1g
