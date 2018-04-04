@@ -15,6 +15,7 @@ RUN set -x; \
     apt-get -y install software-properties-common && \
     add-apt-repository -y ppa:git-core/ppa && \
     add-apt-repository -y ppa:openjdk-r/ppa && \
+    add-apt-repository -y ppa:gophers/archive && \
     apt-get -y update && \
     apt-get clean && \
     apt-get autoclean
