@@ -6,7 +6,7 @@ ENV USER_ID 1000
 ENV GROUP_ID 1000
 ENV XTOOL_VERSION 6.4.0.1
 ENV PYTHON_VERSION 2.7.10
-ENV GOLANG_VERSION 1.7.4
+ENV GOLANG_VERSION 1.15.3
 ENV GOARCH arm
 ENV GOARM 7
 
@@ -59,16 +59,24 @@ RUN set -x; \
     wget -O /tmp/xpython2.tgz https://github.com/droboports/python2/releases/download/v${PYTHON_VERSION}/xpython2.tgz && \
     mkdir -p /home/drobo/xtools/python2/5n && \
     tar -zxf /tmp/xpython2.tgz -C /home/drobo/xtools/python2/5n && \
-    rm -f /tmp/xpython2.tgz && \
-    chown -R drobo:drobo /home/drobo
+    rm -f /tmp/xpython2.tgz
 
 # Golang cross-compiler
 RUN set -x; \
-    wget -O /tmp/xgolang.tgz https://github.com/droboports/golang/releases/download/v${GOLANG_VERSION}/xgolang.tgz && \
+    wget -O /tmp/xgolang.tgz https://github.com/droboports/golang/releases/download/v1.7.4/xgolang.tgz && \
     mkdir -p /home/drobo/xtools/golang/5n && \
     tar -zxf /tmp/xgolang.tgz -C /home/drobo/xtools/golang/5n && \
-    rm -f /tmp/xgolang.tgz && \
-    chown -R drobo:drobo /home/drobo
+    rm -f /tmp/xgolang.tgz
+
+# Official Golang
+RUN set -x; \
+    wget -O /tmp/go-${GOLANG_VERSION}.tgz https://golang.org/dl/go${GOLANG_VERSION}.linux-amd64.tar.gz && \
+    mkdir -p /usr/lib/go-${GOLANG_VERSION} && \
+    tar -zxf /tmp/go-${GOLANG_VERSION}.tgz -C /usr/lib/go-${GOLANG_VERSION} && \
+    mv /usr/lib/go-${GOLANG_VERSION}/go/* /usr/lib/go-${GOLANG_VERSION}/ && \
+    rmdir /usr/lib/go-${GOLANG_VERSION}/go && \
+    rm -f /tmp/go-${GOLANG_VERSION}.tgz && \
+    ln -fs go-${GOLANG_VERSION} /usr/lib/go
 
 RUN set -x; \
     mkdir -p   /mnt/DroboFS/Shares/DroboApps /mnt/DroboFS/System /dist && \
