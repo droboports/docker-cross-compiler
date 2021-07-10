@@ -1,5 +1,6 @@
 antlr3
 autoconf
+autoconf-archive
 autogen
 automake
 autotools-dev
@@ -38,6 +39,7 @@ gzip
 intltool
 libgcrypt20-dev
 libncurses5-dev
+libssl-dev
 libtool
 libxml2-utils
 m4
@@ -47,6 +49,7 @@ man-db
 manpages
 manpages-dev
 mawk
+meson
 mc
 mc-data
 mtd-utils
