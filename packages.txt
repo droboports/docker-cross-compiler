@@ -41,6 +41,7 @@ libgcrypt20-dev
 libncurses5-dev
 libssl-dev
 libtool
+libtool-bin
 libxml2-utils
 m4
 make
