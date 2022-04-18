@@ -22,6 +22,13 @@ RUN set -x; \
     apt-get clean && \
     apt-get autoclean
 
+# NodeJS and npm
+RUN set -x; \
+    curl -fsSL https://deb.nodesource.com/setup_17.x | sudo -E bash - && \
+    apt-get install -y nodejs \
+    apt-get clean && \
+    apt-get autoclean
+
 # The official toolchain is 32-bit
 RUN set -x; \
     dpkg --add-architecture i386 && \
@@ -81,7 +88,7 @@ RUN set -x; \
 
 # Official Golang
 RUN set -x; \
-    wget -O /tmp/go-1.16.tgz https://golang.org/dl/go1.16.5.linux-amd64.tar.gz && \
+    wget -O /tmp/go-1.16.tgz https://golang.org/dl/go1.16.15.linux-amd64.tar.gz && \
     mkdir -p /usr/lib/go-1.16 && \
     tar -zxf /tmp/go-1.16.tgz -C /usr/lib/go-1.16 && \
     mv /usr/lib/go-1.16/go/* /usr/lib/go-1.16/ && \
